@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block title %}Detail article{% endblock %}
+{% block body %}
+<h3 style ="padding-left:10px">Détail de l'article :</h3>
+    <div class="container" style="margin-left:0;">
+        <div class="card bg-secondary mb-3" style="max-width: 20rem;">
+            <h3 class="card-header">{{tab.title}}</h3>
+            <div class="card-body">
+                <div class="d-block user-select-none" >
+                    <img src="{{tab.image}}" alt="{{tab.title}}" width="100%" height="200">
+                </div>
+              <p class="card-text">{{tab.contenu}}</p>
+            </div>
+            <div class="card-footer text-muted">
+                Ajouté le {{ tab.createdAt | date("d/m/Y")}} 
+                à {{ tab.createdAt | date("H:i")}}
+            </div>
+            <div class="card-footer text-muted">
+                Modifié le {{ tab.updatedAt | date("d/m/Y")}} 
+                à {{ tab.updatedAt | date("H:i")}}
+            </div>
+            <div class="card-footer text-muted">
+                qui à pour Nom : {{ tab.writeBy.name}} {{ tab.writeBy.firstname}}
+            </div>
+            <div class="card-footer text-muted">
+               de type : {% for el in tab.category %}{{ el.title}}{% endfor %}
+            </div>
+      </div>
+    </div>
+{% endblock %}
